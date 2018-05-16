@@ -1,0 +1,26 @@
+
+<div *ngIf = "selectedAuthor">
+  <p class="font-italic" >Quotes by {{selectedAuthor.name}}: </p>
+  <table class="table table-striped text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th>Quote</th>
+        <th>Votes</th>
+        <th>Actions Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let quote of selectedAuthor.quotes">
+        <td>{{quote.content}}</td>
+        <td>{{quote.vote}}</td>
+        <td>
+          <button class="btn btn-warning" style="margin-right: 5px;" (click) = "voteUp(quote._id)">Vote Up</button>
+          <button class="btn btn-success" style="margin-right: 5px;" (click) = "voteDown(quote._id)">Vote Down</button>
+          <button class="btn btn-danger" (click) = "deleteThisQuote(quote._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button [routerLink] = "['/writers']" class="btn btn-outline-secondary">Home</button>
+  <button class="btn btn-outline-info float-right" routerLink = '/writers/quotes/new/{{selectedAuthor._id}}'>Add new Quote</button>
+</div>

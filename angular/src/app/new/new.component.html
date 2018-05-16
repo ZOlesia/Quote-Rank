@@ -1,0 +1,35 @@
+
+
+<form (submit)="createAuthor()" class="bg-light  mx-auto border border-info" style="height: 400px; width: 400px;">
+    <a href="" [routerLink] = "['/writers']" class="float-right" style = "margin: 5px;">Home</a>
+    <p style="margin: 75px 0 0 125px">Add a new Author: </p>
+  <div class="form-group col-8 ml-50" style="margin: auto; margin-top: 25px;">
+      <label for="newAuthor.name">Name</label>
+      <input type="text" class = "form-control" name="newAuthor.name" placeholder="Name.." required minlength="3"  [(ngModel)] = "newAuthor.name" #name="ngModel">
+  </div>
+  <div *ngIf = "err" class="alert alert-danger">{{err}}</div>
+  <div *ngIf="name.invalid && (name.dirty || !name.untouched)"
+  class="alert alert-danger">
+    <div *ngIf="name.errors.required">
+    Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+    Name must be at least 3 characters long.
+    </div>
+  </div>
+  <input type="submit" value="Add" class="btn btn-success" style="margin: 50px 20px 0px 130px;" [disabled]="!name.valid">
+  <button [routerLink] = "['/writers']" class="btn btn-primary" style="margin-top: 50px;">Cancel</button>
+</form>
+
+
+ 
+      
+
+
+
+
+
+
+
+
+

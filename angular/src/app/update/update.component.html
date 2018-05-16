@@ -1,0 +1,35 @@
+
+
+  <!-- <div *ngIf = "err" class="alert alert-danger">{{err}}</div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+  class="alert alert-danger">
+    <div *ngIf="name.errors.required">
+    Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+    Name must be at least 3 characters long.
+    </div>
+  </div> -->
+ 
+
+
+<form (submit) = "editOneAuthor(updateAuthor._id)" class="bg-light  mx-auto border border-info" style="height: 400px; width: 400px;">
+    <a href="" [routerLink] = "['/writers']" class="float-right" style = "margin: 5px;">Home</a>
+    <p style="margin: 75px 0 0 125px">Edit this Author: </p>
+  <div class="form-group col-8 ml-50" style="margin: auto; margin-top: 25px;">
+      <label for="updateAuthor.name">Name</label>
+      <input type="text" class = "form-control" name="updateAuthor.name" placeholder="Name.." required minlength="3"  [(ngModel)] = "updateAuthor.name" #name="ngModel">
+  </div>
+  <div *ngIf = "err" class="alert alert-danger">{{err}}</div>
+  <div *ngIf="name.invalid && (name.dirty || !name.untouched)"
+  class="alert alert-danger">
+    <div *ngIf="name.errors.required">
+    Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+    Name must be at least 3 characters long.
+    </div>
+  </div>
+  <input type="submit" value="Edit" class="btn btn-success" style="margin: 50px 20px 0px 130px;">
+  <button [routerLink] = "['/writers']" class="btn btn-primary" style="margin-top: 50px;">Cancel</button>
+</form>

@@ -1,0 +1,23 @@
+
+
+<form (submit)="addNewQuote()" class="bg-light  mx-auto border border-info" style="height: 400px; width: 400px;">
+    <a href="" [routerLink] = "['/writers']" class="float-right" style = "margin: 5px;">Home</a>
+    <p style="margin: 75px 0 0 125px" *ngIf="author">Provide new Quote by {{author.name}}: </p>
+  <div class="form-group col-8 ml-50" style="margin: auto; margin-top: 25px;">
+      <label for="newQuote.content">Content</label>
+      <input type="text" class = "form-control" name="newQuote.content" placeholder="Content.." required minlength="3"  [(ngModel)] = "newQuote.content" #content="ngModel">
+  </div>
+  <div *ngIf = "err" class="alert alert-danger">{{err}}</div>
+  <div *ngIf="content.invalid && (content.dirty || !content.untouched)"
+  class="alert alert-danger">
+    <div *ngIf="content.errors.required">
+    Quote is required.
+    </div>
+    <div *ngIf="content.errors.minlength">
+    Quote must be at least 3 characters long.
+    </div>
+  </div>
+  <input type="submit" value="Add" class="btn btn-success" style="margin: 50px 20px 0px 130px;" [disabled]="!content.valid">
+  <button routerLink = '/writers/quotes/{{authorId}}' class="btn btn-primary" style="margin-top: 50px;">Cancel</button>
+</form>
+
